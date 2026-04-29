@@ -1,0 +1,20 @@
+from selenium.webdriver.common.by import By
+
+class FaqLocators():
+    FAQ_HEADER = (By.XPATH,"//div[contains(text(), 'Вопросы о важном')]")
+    COST_AND_PAYMENT_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-0']")
+    COST_AND_PAYMENT_ANSWER = (By.XPATH,"//p[contains(text(), 'Сутки — 400 рублей. Оплата курьеру — наличными или картой.')]")
+    MULTIPLE_SCOOTERS_AVAILABLE_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-1']")
+    MULTIPLE_SCOOTERS_AVAILABLE_ANSWER = (By.XPATH,"//p[contains(text(), 'Пока что у нас так: один заказ — один самокат.')]")
+    RENT_TIME_CALCULATION_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-2']")
+    RENT_TIME_CALCULATION_ANSWER = (By.XPATH,"//p[contains(text(), 'Допустим, вы оформляете заказ на 8 мая.')]")
+    TODAY_BOOKING_POSSIBLE_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-3']")
+    TODAY_BOOKING_POSSIBLE_ANSWER = (By.XPATH,"//p[contains(text(), 'Только начиная с завтрашнего дня. Но скоро станем расторопнее.')]")
+    RENT_EXTENSION_OR_EARLY_RETURN_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-4']")
+    RENT_EXTENSION_OR_EARLY_RETURN_ANSWER = (By.XPATH,"//p[contains(text(), 'Пока что нет!')]")
+    CHARGER_INCLUDED_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-5']")
+    CHARGER_INCLUDED_ANSWER = (By.XPATH,"//p[contains(text(), 'Самокат приезжает к вам с полной зарядкой.')]")
+    ORDER_CANCELLATION_POSSIBLE_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-6']")
+    ORDER_CANCELLATION_POSSIBLE_ANSWER = (By.XPATH,"//p[contains(text(), 'Да, пока самокат не привезли.')]")
+    DELIVERY_BEYOND_MKAD_QESTION = (By.XPATH,"//div[@id = 'accordion__heading-7']")
+    DELIVERY_BEYOND_MKAD_ANSWER = (By.XPATH,"//p[contains(text(), 'Да, обязательно. Всем самокатов! И Москве, и Московской области.')]")
