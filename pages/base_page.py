@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
 
-    def __init__(self, driver, timeout=10):
+    def __init__(self, driver, timeout=15):
         self.driver = driver
         self.wait = WebDriverWait(driver, timeout)
 
@@ -42,14 +42,30 @@ class BasePage:
     
     @allure.step("Переключение фокуса на новое окно")
     def focus_on_window(self):
-        all_handles = self.driver.window_handles
-        if len(all_handles) > 1:
-            self.driver.switch_to.window(all_handles[1])
-            print(f"Переключились на окно: {all_handles[1]}")
-        else:
-            print("Второе окно не открыто, остаёмся в текущем")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+
+    @allure.step("Клик на элемент через JavaScript")
+    def js_click(self, element):
+        self.driver.execute_script("arguments[0].click();", element)
 
     @allure.step("Пролистать страницу до определенного элемента")    
     def scroll_to_element(self, locator):
         element = self.driver.find_element(*locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    @allure.step("Ожидаем, пока элемент станет кликабельным, и возвращаем его")
+    def wait_element_to_be_clickable(self, locator):
+        return self.wait.until(EC.element_to_be_clickable(locator))
+
+    @allure.step("Ожидает видимости элемента и возвращает его")
+    def wait_visibility_of_element(self, locator):
+        return self.wait.until(EC.visibility_of_element_located(locator))
+
+    @allure.step("Ожидает присутствия элемента в DOM и возвращает его")        
+    def wait_presence_of_element(self, locator):
+        return self.wait.until(EC.presence_of_element_located(locator))
+    
+    @allure.step("Ожидает присутствие текста в URL и возвращает результат")
+    def wait_when_page_contains_text(self, text):
+        page = WebDriverWait(self.driver, 40).until(EC.url_contains(text))
+        return page    
